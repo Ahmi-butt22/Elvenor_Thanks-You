@@ -140,7 +140,11 @@ body {
   user-select: none;
   opacity: 0;
 }
-
+html, body {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+  touch-action: none;
+  }
 </style>
 </head>
 
@@ -279,3 +283,4 @@ noteContainer.style.fontFamily = randomNote.font;
 </body>
 
 </html>
+
