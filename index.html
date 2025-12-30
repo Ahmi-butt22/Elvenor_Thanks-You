@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elvenor ✨ Thank You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+  font-family: 'Didot';
+  src: url('Didot.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Georgia', serif;
+  transition: background 1s ease;
+}
+
+/* NEW WRAPPER TO MOVE ENTIRE PAGE DOWN */
+.page-wrapper {
+  position: relative;
+  top: 120px; /* Adjust this value to move everything down */
+  width: 100%;
+  height: 100%;
+}
+
+.main-content {
+  position: relative;
+  z-index: 10; /* above sparkles */
+}
+
+.logo-underline {
+  position: absolute;
+  top: 12px;
+  left: 53%;
+  transform: translateX(-50%);
+  width: 250px;
+  pointer-events: none;
+  z-index: 2; /* below flowers */
+}
+
+.flower {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform-origin: center;
+  z-index: 5; /* flowers sit above everything */
+}
+
+.flower-wrap {
+  position: absolute;
+  pointer-events: none;
+  transform-origin: center;
+  z-index: 6; /* flowers ABOVE underline & text */
+}
+
+/* Size presets */
+.size-small  { transform: scale(0.6); }
+.size-medium { transform: scale(0.8); }
+.size-large  { transform: scale(1); }
+
+.underline-text {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.underline-text::before,
+.underline-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.2px;
+  background: linear-gradient(
+    120deg,
+    rgba(212,175,55,0.25),
+    rgba(255,235,180,0.95),
+    rgba(212,175,55,0.25)
+  );
+  background-size: 200% 100%;
+  transform-origin: left;
+  filter: blur(0.3px);
+  animation: underlineBreath 4.8s ease-in-out infinite;
+}
+
+.underline-text::before { bottom: 0; }
+.underline-text::after { bottom: -4px; opacity: 0.5; animation-delay: 2.4s; }
+
+@keyframes underlineBreath {
+  0% { background-position: 0% 50%; opacity: 0.35; }
+  50% { background-position: 100% 50%; opacity: 1; }
+  100% { background-position: 0% 50%; opacity: 0.35; }
+}
+
+.container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: left;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 4s ease;
+  width: 90%;
+  max-width: 500px;
+}
+
+.logo {
+  font-family: 'Allura', cursive;
+  font-size: 54px;
+  text-align: center;
+  color: #F3E5AB;
+  margin-top: 18px;
+  position: relative;
+  z-index: 3; /* logo above underline, below flowers */
+}
+
+.thankyou {
+  text-align: left;
+  margin-top: 80px;
+  font-size: 18px; 
+  color: #FFF8E7;
+  letter-spacing: 0.5px;
+  transform: scaleX(1.05);
+  margin-left: 5px;
+}
+
+.cta-line {
+  font-family: 'Poiret One', sans-serif;
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 0 0 1.5px gold;
+  text-align: center;
+  margin-right: 30px;
+  white-space: nowrap;
+}
+
+.insta-wrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  align-items: flex-end;
+}
+
+.insta-btn {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 30px;
+  font-family: 'Poiret One', sans-serif;
+  text-shadow: 0 0 1.5px gold;
+  position: relative;
+  white-space: nowrap;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 2px;
+  color: #f6d27a;
+  pointer-events: none;
+  text-shadow: 0 0 3.5px gold;
+  user-select: none;
+  opacity: 0;
+  z-index: 1; /* behind everything */
+}
+
+html, body {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- WRAP EVERYTHING IN THIS DIV -->
+<div class="page-wrapper">
+  <div class="main-content">
+    <div class="container">
+      <div class="logo">Elvenor</div>
+      <img src="underline.png" class="logo-underline" alt="Logo Underline">
+
+      <div class="flowers">
+
+  <div class="flower-wrap size-medium" style="top:40.5px; left:63.5px;">
+    <div class="flower"></div>
+  </div>
+  <div class="flower-wrap size-large" style="top:46.5px; left:145px;">
+    <div class="flower"></div>
+  </div>
+  <div class="flower-wrap size-small" style="top:51.1px; left:194.1px;">
+    <div class="flower"></div>
+  </div>
+  <div class="flower-wrap size-medium" style="top:40.5px; left:213.2px;">
+    <div class="flower"></div>
+  </div>
+  
+</div>
+
+      <div class="thankyou" id="thankyou-note"></div>
+      <div class="insta-wrap">
+        <div class="cta-line">
+          Your thoughts inspire us — we’d love to hear from you.
+        </div>
+        <a class="insta-btn" href="https://instagram.com/elvenor.store" target="_blank">
+          <span class="underline-text">Share your sparkle ✨</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="chime" src="shine.mp3" preload="auto"></audio>
+
+<script>
+// Your existing JS remains completely unchanged
+// Background colors
+const colors = ['#021e13', '#1a2f3b'];
+document.body.style.background = colors[Math.floor(Math.random()*colors.length)];
+
+// Sparkle characters
+const sparkleChars = ['♡','✦','❀','✧','✩','❀','❖','✶','♡'];
+
+const haloRadius = 120;
+const haloCount = 25;
+const haloDuration = 3000;
+const container = document.querySelector('.container');
+const rect = container.getBoundingClientRect();
+const centerX = rect.left + rect.width / 2.1;
+const centerY = rect.top + rect.height / 1.2;
+
+let haloElements = [];
+for(let i=0;i<haloCount;i++){
+  const s = document.createElement('div');
+  s.className='sparkle';
+  s.innerText = sparkleChars[Math.floor(Math.random()*sparkleChars.length)];
+  s.style.fontSize = (6 + Math.random()*8)+'px';
+  document.body.appendChild(s);
+  haloElements.push(s);
+}
+
+let startTime = null;
+function animateHalo(timestamp){
+  if(!startTime) startTime = timestamp;
+  const elapsed = timestamp - startTime;
+  const angleOffset = (elapsed/haloDuration)*1*Math.PI;
+
+  haloElements.forEach((s,i)=>{
+    const angle = (i/haloCount)*2*Math.PI + angleOffset;
+    s.style.left = (centerX + haloRadius*Math.cos(angle)*1.2) + 'px';
+    s.style.top = (centerY + haloRadius*Math.sin(angle)*0.8) + 'px';
+    s.style.opacity = 0.8 + 0.2*Math.sin(angle*5 + elapsed/200);
+  });
+
+  if(elapsed < haloDuration){
+    requestAnimationFrame(animateHalo);
+  } else {
+    haloElements.forEach(s => {
+      s.style.transition = 'opacity 1s ease';
+      s.style.opacity = 0;
+    });
+
+    setTimeout(() => {
+      haloElements.forEach(s => s.remove());
+      document.querySelector('.container').style.opacity = 1;
+
+      const haloSound = document.getElementById("chime");
+      haloSound.volume = 0.5;
+      haloSound.play().catch(err => {
+        document.body.addEventListener('click', () => { haloSound.play(); }, {once:true});
+      });
+      startStaticTwinkle();
+    }, 1000);
+  }
+}
+requestAnimationFrame(animateHalo);
+
+let sparkleSets = [[], [], []];
+const setCount = 3;
+const sparklesPerSet = 25;
+
+function startStaticTwinkle() {
+  for (let set = 0; set < setCount; set++) {
+    for (let i = 0; i < sparklesPerSet; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.innerText = sparkleChars[Math.floor(Math.random()*sparkleChars.length)];
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.top = Math.random() * 100 + 'vh';
+      s.style.fontSize = (0.08 + Math.random() * 8) + 'px';
+      s.style.transition = 'opacity 2s ease-in-out';
+      document.body.appendChild(s);
+      sparkleSets[set].push(s);
+    }
+  }
+
+  let activeSet = 0;
+  setInterval(() => {
+    for (let i = 0; i < setCount; i++) {
+      sparkleSets[i].forEach(s => {
+        s.style.opacity = (i === activeSet ? 1 : 0);
+      });
+    }
+    activeSet = (activeSet + 1) % setCount;
+  }, 2500);
+}
+
+const thankYouNotes = [
+  {text: "With gratitude, Elvenor thanks you for letting us add a sparkle to your day.", font: "'Sacramento', sans-serif"},
+  {text: "Thank you for shopping with Elvenor — Every piece is made to celebrate your brilliance.", font: "'Sacramento', sans-serif"},
+  {text: "We are grateful for your choice — Elvenor celebrates the sparkle you bring.", font: "'Poiret One', sans-serif"},
+  {text: "Your elegance inspires us — Thank you for shopping with Elvenor.", font: "'Didot', sans-serif"},
+  {text: "Every shimmer matters. Elvenor thanks you for letting us be part of yours.", font: "'Sacramento', sans-serif"},
+  {text: "Your sparkle lights up our world — Thank you for choosing Elvenor.", font: "'Poiret One', sans-serif"},
+  {text: "With warmth and gratitude, Elvenor celebrates your choice today.", font: "'Didot', sans-serif"}
+];
+
+const randomNote = thankYouNotes[Math.floor(Math.random()*thankYouNotes.length)];
+const noteContainer = document.getElementById('thankyou-note');
+noteContainer.innerText = randomNote.text;
+noteContainer.style.fontFamily = randomNote.font;
+
+const bloomFrames = ["1.png","2.png","3.png","4.png","5.png","6.png","7.png"];
+
+function animateFlower(flower) {
+  let frame = 0;
+  let direction = 1;
+
+  function next() {
+    flower.style.backgroundImage = `url(${bloomFrames[frame]})`;
+
+    let rotation = 0;
+    if(frame === bloomFrames.length - 1) rotation = 25;
+    else if(frame === bloomFrames.length - 2) rotation = 12;
+    else rotation = 0;
+    flower.style.transform = `rotate(${rotation}deg)`;
+
+    frame += direction;
+
+    if(frame >= bloomFrames.length - 1 || frame <= 0) {
+      direction *= -1;
+      if(frame <= 0) {
+        setTimeout(next, 1100 + Math.random()*1100); 
+        return;
+      }
+    }
+    setTimeout(next, 300);
+  }
+  setTimeout(next, Math.random()*2000);
+}
+
+document.querySelectorAll(".flower").forEach(f => animateFlower(f));
+</script>
+</body>
+</html>
