@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elvenor ✨ Thank You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+/* HIDE ALL SCROLLBARS */
+html, body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin: 0;
+  padding: 0;
+  background: #000; /* Set black background immediately */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@font-face {
+  font-family: 'Didot';
+  src: url('Didot.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Georgia', serif;
+  background: #000;
+}
+
+/* NEW WRAPPER TO MOVE ENTIRE PAGE DOWN */
+.page-wrapper {
+  position: relative;
+  top: 120px;
+  width: 100%;
+  height: 100%;
+}
+
+.main-content {
+  position: relative;
+  z-index: 10;
+}
+
+.logo-underline {
+  position: absolute;
+  top: 12px;
+  left: 53%;
+  transform: translateX(-50%);
+  width: 250px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.flower-wrap {
+  position: absolute;
+  pointer-events: none;
+  transform-origin: center;
+  z-index: 6;
+  overflow: visible;
+}
+
+.flower {
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform-origin: center;
+  image-rendering: auto;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Size presets */
+.size-small  { transform: scale(0.9); }
+.size-medium { transform: scale(1); }
+.size-large  { transform: scale(1.15); }
+
+/* Individual flower positioning for desktop */
+.flower1 { top: 34px; left: 53.5px; }
+.flower2 { top: 45.5px; left: 145px; }
+.flower3 { top: 34.3px; left: 177.5px; }
+.flower4 { top: 32px; left: 205.18px; }
+
+/* Mobile positioning */
+@media (max-width: 768px) {
+  .flower1 { top: 30px; left: 20%; }
+  .flower2 { top: 40px; left: 45%; }
+  .flower3 { top: 30px; left: 55%; }
+  .flower4 { top: 28px; left: 70%; }
+}
+
+@media (max-width: 480px) {
+  .flower1 { top: 30.5px; left: 17.75%; }
+  .flower2 { top: 45.75px; left: 44.75%; }
+  .flower3 { top: 34px; left: 54.5%; }
+  .flower4 { top: 31.3px; left: 63.2%; }
+}
+
+.underline-text {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.underline-text::before,
+.underline-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.2px;
+  background: linear-gradient(
+    120deg,
+    rgba(212,175,55,0.25),
+    rgba(255,235,180,0.95),
+    rgba(212,175,55,0.25)
+  );
+  background-size: 200% 100%;
+  transform-origin: left;
+  filter: blur(0.3px);
+  animation: underlineBreath 4.8s ease-in-out infinite;
+}
+
+.underline-text::before { bottom: 0; }
+.underline-text::after { bottom: -4px; opacity: 0.5; animation-delay: 2.4s; }
+
+@keyframes underlineBreath {
+  0% { background-position: 0% 50%; opacity: 0.35; }
+  50% { background-position: 100% 50%; opacity: 1; }
+  100% { background-position: 0% 50%; opacity: 0.35; }
+}
+
+.container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: left;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 4s ease;
+  width: 90%;
+  max-width: 500px;
+}
+
+.logo {
+  font-family: 'Allura', cursive;
+  font-size: 54px;
+  text-align: center;
+  color: #F3E5AB;
+  margin-top: 18px;
+  position: relative;
+  z-index: 3;
+}
+
+.thankyou {
+  text-align: left;
+  margin-top: 95px;
+  font-size: 18px; 
+  color: #FFF8E7;
+  letter-spacing: 0.5px;
+  transform: scaleX(1.05);
+  margin-left: 5px;
+}
+
+.cta-line {
+  font-family: 'Poiret One', sans-serif;
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 0 0 1.5px gold;
+  text-align: center;
+  margin-right: 0px;
+  margin-top: 10px;
+  white-space: nowrap;
+}
+
+.insta-wrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.insta-btn {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #FFF8E7;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 60px;
+  font-family: 'Poiret One', sans-serif;
+  text-shadow: 0 0 5px gold;
+  position: relative;
+  white-space: nowrap;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 2px;
+  color: #f6d27a;
+  pointer-events: none;
+  text-shadow: 0 0 3.5px gold;
+  user-select: none;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Named halo elements for mobile adjustments */
+.halo1, .halo2, .halo3, .halo4, .halo5, 
+.halo6, .halo7, .halo8, .halo9, .halo10,
+.halo11, .halo12, .halo13, .halo14, .halo15,
+.halo16, .halo17, .halo18, .halo19, .halo20 {
+  position: absolute;
+  font-size: 2px;
+  color: #f6d27a;
+  pointer-events: none;
+  text-shadow: 0 0 3.5px gold;
+  user-select: none;
+  opacity: 0.6;
+  z-index: 999;
+}
+
+html, body {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+/* NAME PROMPT STYLES */
+.name-prompt-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  margin-top: -60px;
+  background: transparent;
+}
+
+.name-prompt-box {
+  background: transparent;
+  padding: 0;
+  border: none;
+  text-align: center;
+  z-index: 1001;
+  max-width: 400px;
+  width: 90%;
+}
+
+.name-prompt-text {
+  font-family: 'Poiret One', sans-serif;
+  font-size: 16px;
+  color: #F3E5AB;
+  margin-bottom: 10px;
+  text-shadow: 0 0 3px rgba(243, 229, 171, 0.5);
+}
+
+.name-input-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 240px;
+}
+
+.name-input-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212,175,55,0.7) 20%, 
+    rgba(255,235,180,0.95) 50%, 
+    rgba(212,175,55,0.7) 80%, 
+    transparent 100%
+  );
+  margin-bottom: 10px;
+}
+
+.name-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #FFF8E7;
+  font-family: 'Sacramento', cursive;
+  font-size: 24px;
+  text-align: center;
+  outline: none;
+  padding: 2px 0;
+  caret-color: #F3E5AB;
+  letter-spacing: 1px;
+}
+
+.name-input::placeholder {
+  color: rgba(255, 248, 231, 0.3);
+  font-family: 'Sacramento', cursive;
+  font-size: 20px;
+}
+
+.name-submit {
+  background: transparent;
+  border: none;
+  color: #F3E5AB;
+  font-family: 'Poiret One', sans-serif;
+  font-size: 12px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 3px rgba(243, 229, 171, 0.5);
+}
+
+.name-submit:hover {
+  opacity: 1;
+}
+
+/* WELCOME NOTE STYLES */
+.welcome-note-container {
+  position: fixed;
+  top: 43.8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 501;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  transition: opacity 1.5s ease;
+}
+
+.welcome-note {
+  font-family: 'Poiret One', sans-serif;
+  font-size: 16px;
+  color: #F3E5AB;
+  text-shadow: 0 0 10px rgba(243, 229, 171, 0.7);
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* COMET UNDERLINE WITH VISIBLE CLOUD */
+.comet-underline {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  overflow: visible;
+  z-index: -1;
+}
+
+/* COMET BACKGROUND CLOUD */
+.comet-background-cloud {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(243, 229, 171, 0.15) 15%,
+    rgba(243, 229, 171, 0.25) 30%,
+    rgba(243, 229, 171, 0.35) 45%,
+    rgba(243, 229, 171, 0.45) 50%,
+    rgba(243, 229, 171, 0.35) 55%,
+    rgba(243, 229, 171, 0.25) 70%,
+    rgba(243, 229, 171, 0.15) 85%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  border-radius: 3px;
+  z-index: -1;
+  animation: cloudPulse 8s ease-in-out infinite;
+}
+
+/* Comet particles */
+.comet-particle {
+  position: absolute;
+  font-family: 'Arial', sans-serif;
+  color: #F3E5AB;
+  text-shadow: 
+    0 0 1px rgba(255, 235, 180, 0.9),
+    0 0 2px rgba(255, 235, 180, 0.6);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transform-origin: center;
+  will-change: transform, opacity;
+  line-height: 1;
+  z-index: 1;
+}
+
+/* Cloud pulse animation */
+@keyframes cloudPulse {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: translateY(-50%) scaleX(1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: translateY(-50%) scaleX(1.1);
+  }
+}
+
+/* Comet movement animation */
+@keyframes cometMove {
+  0% {
+    opacity: 0;
+    transform: translateX(-5px) scale(0.3);
+  }
+  20% {
+    opacity: 0.6;
+    transform: translateX(0) scale(0.7);
+  }
+  40% {
+    opacity: 0.9;
+    transform: translateX(5px) scale(1);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translateX(10px) scale(0.8);
+  }
+  80% {
+    opacity: 0.3;
+    transform: translateX(15px) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.3);
+  }
+}
+
+/* Twinkle animation */
+@keyframes cometTwinkle {
+  0%, 100% { 
+    opacity: 0.1;
+    transform: scale(0.3);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* SHOOTING STARS - IMPROVED: SIMPLER AND MORE ELEGANT */
+.shooting-star {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  background: #FFF8E7;
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px rgba(255, 235, 180, 0.8));
+}
+
+.shooting-star-trail {
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 235, 180, 0.6) 30%,
+    rgba(243, 229, 171, 0.8) 50%,
+    rgba(212, 175, 55, 0.4) 70%,
+    transparent 100%
+  );
+  filter: blur(0.4px);
+  transform-origin: left center;
+  transform: rotate(225deg);
+}
+
+/* Shooting star animation - SIMPLE AND ELEGANT */
+@keyframes shootStar {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(500px, 500px);
+  }
+}
+
+/* Second type of shooting star animation */
+@keyframes shootStar2 {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(600px, 600px);
+  }
+}
+
+/* TRANSITION HALO STYLES */
+.transition-halo {
+  position: absolute;
+  font-size: 2px;
+  color: #f6d27a;
+  pointer-events: none;
+  text-shadow: 0 0 3.5px gold;
+  user-select: none;
+  opacity: 0;
+  z-index: 998;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAME PROMPT OVERLAY -->
+<div class="name-prompt-container" id="namePrompt">
+  <div class="name-prompt-box">
+    <div class="name-prompt-text">To whom does this sparkle belong?</div>
+    <div class="name-input-wrapper">
+      <div class="name-input-line"></div>
+      <input type="text" class="name-input" id="customerName" placeholder="your beautiful name" maxlength="30">
+    </div>
+    <button class="name-submit" id="submitName">Your sparkle awaits ✨</button>
+  </div>
+</div>
+
+<!-- WELCOME NOTE -->
+<div class="welcome-note-container" id="welcomeNoteContainer">
+  <div class="welcome-note" id="welcomeNote">
+    <!-- Welcome text will be inserted here -->
+    <div class="comet-underline" id="cometUnderline">
+      <!-- Comet background cloud -->
+      <div class="comet-background-cloud"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-wrapper" style="display: none;" id="mainContent">
+  <div class="main-content">
+    <div class="container">
+      <div class="logo">Elvenor</div>
+      <img src="underline.png" class="logo-underline" alt="Logo Underline">
+
+      <div class="flowers">
+        <div class="flower-wrap size-medium flower1">
+          <div class="flower flower-1"></div>
+        </div>
+        <div class="flower-wrap size-large flower2">
+          <div class="flower flower-2"></div>
+        </div>
+        <div class="flower-wrap size-small flower3">
+          <div class="flower flower-3"></div>
+        </div>
+        <div class="flower-wrap size-medium flower4">
+          <div class="flower flower-4"></div>
+        </div>
+      </div>
+
+      <div class="thankyou" id="thankyou-note"></div>
+      <div class="insta-wrap">
+        <div class="cta-line">
+          Your thoughts inspire us — we'd love to hear from you.
+        </div>
+        <a class="insta-btn" href="https://instagram.com/elvenor.store" target="_blank">
+          <span class="underline-text">Share your sparkle here ✨</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUDIO FILES - ONLY CHIME SOUND -->
+<audio id="chime" src="shine.mp3" preload="auto"></audio>
+
+<script>
+// SET BACKGROUND IMMEDIATELY TO PREVENT WHITE FLASH
+document.addEventListener('DOMContentLoaded', function() {
+  // Set black background immediately to prevent any flash
+  document.body.style.background = '#000';
+  
+  // After tiny delay, set random color smoothly
+  setTimeout(() => {
+    document.body.style.background = colors[Math.floor(Math.random()*colors.length)];
+    document.body.style.transition = 'background 0.8s ease'; // Add transition after initial black
+  }, 100);
+});
+
+// BACKGROUND COLORS
+const colors = [     
+  "#36001e", "#1E0011", "#1c0621", "#4d062c",
+  "#030A1C", "#00001c", "#080b38", "#16174d",
+  "#1a4a4f", "#1E3130", "#163832", "#051f20",
+  "#001e1e", "#002426", "#001e17", "#021e13",
+  "#091712", "#002438", "#1a2f3b", "#0c0807",
+  "#000e01"
+];
+
+// SPARKLE CHARACTERS
+const sparkleChars = ['♡','✦','❀','✧','✩','❀','❖','✶','♡'];
+
+// COMET PARTICLES
+const cometChars = ['✦', '✧'];
+const cometSizes = [1, 2, 3, 4, 6, 7, 8, 9, 9.5, 10.5, 12, 10];
+
+// WELCOME NOTES
+const welcomeNotes = [
+  "We see your light, [Name].",
+  "Your essence is known, [Name].",
+  "The magic recognizes you, [Name].",
+  "Step into radiance, [Name].",
+  "Your light belongs here, [Name].",
+  "A precious moment begins, [Name]."
+];
+
+// THANK YOU NOTES
+const thankYouNotes = [
+  {text: "With gratitude, Elvenor thanks you for letting us add a sparkle to your day.", font: "'Sacramento', sans-serif"},
+  {text: "Thank you for shopping with Elvenor — Every piece is made to celebrate your brilliance.", font: "'Sacramento', sans-serif"},
+  {text: "We are grateful for your choice — Elvenor celebrates the sparkle you bring.", font: "'Poiret One', sans-serif"},
+  {text: "Your elegance inspires us — Thank you for shopping with Elvenor.", font: "'Didot', sans-serif"},
+  {text: "Every shimmer matters. Elvenor thanks you for letting us be part of yours.", font: "'Sacramento', sans-serif"},
+  {text: "Your sparkle lights up our world — Thank you for choosing Elvenor.", font: "'Poiret One', sans-serif"},
+  {text: "With warmth and gratitude, Elvenor celebrates your choice today.", font: "'Didot', sans-serif"}
+];
+
+// VARIABLES
+let namePromptHaloElements = [];
+let namePromptAnimationId = null;
+let customerName = "";
+let selectedThankYouNote = null;
+let selectedWelcomeNote = null;
+let shootingStarInterval = null;
+
+// CREATE MICRO COMET UNDERLINE
+function createMicroCometUnderline() {
+  const cometUnderline = document.getElementById('cometUnderline');
+  const welcomeNote = document.getElementById('welcomeNote');
+  
+  const textWidth = welcomeNote.offsetWidth;
+  cometUnderline.style.width = `${textWidth}px`;
+  
+  const particles = cometUnderline.querySelectorAll('.comet-particle');
+  particles.forEach(p => p.remove());
+  
+  const particleCount = 120;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('span');
+    particle.className = 'comet-particle';
+    
+    const char = cometChars[Math.floor(Math.random() * cometChars.length)];
+    const fontSize = cometSizes[Math.floor(Math.random() * cometSizes.length)];
+    const xPosition = Math.random() * textWidth;
+    
+    particle.style.left = `${xPosition}px`;
+    particle.style.top = `${Math.random() * 6 - 3}px`;
+    particle.style.fontSize = `${fontSize}px`;
+    
+    const baseOpacity = 0.3 + Math.random() * 0.5;
+    particle.style.opacity = baseOpacity;
+    particle.innerText = char;
+    
+    if (Math.random() > 0.6) {
+      const moveDuration = 1 + Math.random() * 2;
+      const startDelay = Math.random() * 3;
+      particle.style.animation = `cometMove ${moveDuration}s ease-out ${startDelay}s infinite`;
+    } else {
+      const twinkleDuration = 1 + Math.random() * 3;
+      const twinkleDelay = Math.random() * 4;
+      particle.style.animation = `cometTwinkle ${twinkleDuration}s ease-in-out ${twinkleDelay}s infinite`;
+    }
+    
+    cometUnderline.appendChild(particle);
+  }
+}
+
+// CREATE SHOOTING STAR - SIMPLE AND ELEGANT
+function createShootingStar() {
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  
+  // SIMPLE SIZE VARIATION
+  const starSize = Math.random() > 0.7 ? 1.2 : 0.8;
+  star.style.width = `${starSize}px`;
+  star.style.height = `${starSize}px`;
+  
+  // SIMPLE BRIGHTNESS VARIATION
+  const isBright = Math.random() > 0.8;
+  if (isBright) {
+    star.style.background = '#FFFFFF';
+    star.style.boxShadow = '0 0 3px 1px rgba(255, 235, 180, 0.9)';
+  }
+  
+  // TRAIL LENGTH
+  const trailLength = isBright ? 120 : 80 + Math.random() * 40;
+  
+  const trail = document.createElement('div');
+  trail.className = 'shooting-star-trail';
+  trail.style.width = `${trailLength}px`;
+  trail.style.height = `${Math.random() * 0.3 + 0.2}px`;
+  star.appendChild(trail);
+  
+  // START POSITION: From top-left area
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  
+  // Start from top-left, but spread out more
+  const startX = -20 + Math.random() * (viewportWidth * 0.5);
+  const startY = -20 + Math.random() * (viewportHeight * 0.4);
+  
+  star.style.left = `${startX}px`;
+  star.style.top = `${startY}px`;
+  
+  document.body.appendChild(star);
+  
+  // CHOOSE ANIMATION TYPE
+  const useSecondAnimation = Math.random() > 0.5;
+  
+  let animationName, duration;
+  
+  if (useSecondAnimation) {
+    animationName = 'shootStar2';
+    duration = 4000 + Math.random() * 600;
+  } else {
+    animationName = 'shootStar';
+    duration = 5500 + Math.random() * 500;
+  }
+  
+  // Apply animation
+  star.style.animation = `${animationName} ${duration}ms cubic-bezier(0.1, 0.8, 0.2, 1) forwards`;
+  
+  // Remove after animation
+  setTimeout(() => {
+    if (star.parentNode) {
+      star.remove();
+    }
+  }, duration + 100);
+}
+
+// START SHOOTING STARS
+function startShootingStars() {
+  // Clear existing interval
+  if (shootingStarInterval) {
+    clearInterval(shootingStarInterval);
+  }
+  
+  let starsCreated = 0;
+  const maxStars = 10 + Math.floor(Math.random() * 3); // 4-6 stars (fewer is better)
+  
+  function createStar() {
+    if (starsCreated < maxStars) {
+      createShootingStar();
+      starsCreated++;
+      
+      const nextDelay = 500 + Math.random() * 1000; // More space between stars
+      setTimeout(createStar, nextDelay);
+    } else {
+      // Longer pause before next shower
+      setTimeout(() => {
+        starsCreated = 0;
+        createStar();
+      }, 6000 + Math.random() * 4000);
+    }
+  }
+  
+  createStar();
+}
+
+// PLAY CHIME SOUND
+function playChimeSound() {
+  const haloSound = document.getElementById("chime");
+  if (!haloSound) return;
+  
+  try {
+    haloSound.volume = 0.5;
+    haloSound.currentTime = 0;
+    haloSound.play().catch(() => {});
+  } catch (e) {}
+}
+
+// CREATE SLOW HALO FOR NAME PROMPT WITH NUMBERED CLASSES
+function createNamePromptHalo() {
+  const container = document.querySelector('.name-prompt-box');
+  const rect = container.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2.05;
+  const centerY = rect.top + rect.height / 2 - 10;
+  const haloRadius = 140;
+  const haloCount = 20;
+  
+  namePromptHaloElements.forEach(el => el.remove());
+  namePromptHaloElements = [];
+  
+  for(let i = 0; i < haloCount; i++) {
+    const s = document.createElement('div');
+    s.className = `halo${i+1}`; // Numbered class
+    s.innerText = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
+    s.style.fontSize = (4 + Math.random() * 6) + 'px';
+    s.style.opacity = '0.6';
+    s.style.zIndex = '999';
+    document.body.appendChild(s);
+    namePromptHaloElements.push(s);
+  }
+  
+  let startTime = null;
+  let angleOffset = 0;
+  
+  function animateNameHalo(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    
+    angleOffset = (elapsed / 15000) * Math.PI;
+    
+    namePromptHaloElements.forEach((s, i) => {
+      const angle = (i / haloCount) * 2 * Math.PI + angleOffset;
+      s.style.left = (centerX + haloRadius * Math.cos(angle) * 1.2) + 'px';
+      s.style.top = (centerY + haloRadius * Math.sin(angle) * 0.8) + 'px';
+      s.style.opacity = 0.6 + 0.2 * Math.sin(angle * 5 + elapsed / 500);
+    });
+    
+    namePromptAnimationId = requestAnimationFrame(animateNameHalo);
+  }
+  
+  namePromptAnimationId = requestAnimationFrame(animateNameHalo);
+}
+
+// DISPLAY WELCOME NOTE
+function displayWelcomeNote() {
+  const welcomeNoteElement = document.getElementById('welcomeNote');
+  const welcomeContainer = document.getElementById('welcomeNoteContainer');
+  let welcomeText = selectedWelcomeNote;
+  
+  if (customerName) {
+    welcomeText = welcomeText.replace("[Name]", customerName);
+  } else {
+    welcomeText = welcomeText.replace("[Name]", "Beautiful");
+  }
+  
+  welcomeNoteElement.innerHTML = welcomeText + '<div class="comet-underline" id="cometUnderline"><div class="comet-background-cloud"></div></div>';
+  
+  setTimeout(() => {
+    createMicroCometUnderline();
+  }, 100);
+  
+  setTimeout(() => {
+    welcomeContainer.style.opacity = '1';
+  }, 100);
+}
+
+// DISPLAY THANK YOU NOTE WITH CUSTOMER NAME
+function displayThankYouNoteWithName() {
+  const noteContainer = document.getElementById('thankyou-note');
+  let noteText = selectedThankYouNote.text;
+  
+  if (customerName) {
+    if (selectedThankYouNote.text.includes("With gratitude")) {
+      noteText = `With gratitude, Elvenor thanks you, ${customerName}, for letting us add a sparkle to your day.`;
+    } else if (selectedThankYouNote.text.includes("Thank you for shopping")) {
+      noteText = `Thank you for shopping with Elvenor, ${customerName} — Every piece is made to celebrate your brilliance.`;
+    } else if (selectedThankYouNote.text.includes("We are grateful")) {
+      noteText = `We are grateful for your choice, ${customerName} — Elvenor celebrates the sparkle you bring.`;
+    } else if (selectedThankYouNote.text.includes("Your elegance")) {
+      noteText = `Your elegance inspires us, ${customerName} — Thank you for shopping with Elvenor.`;
+    } else if (selectedThankYouNote.text.includes("Every shimmer matters")) {
+      noteText = `Every shimmer matters. Elvenor thanks you, ${customerName}, for letting us be part of yours.`;
+    } else if (selectedThankYouNote.text.includes("Your sparkle lights")) {
+      noteText = `Your sparkle lights up our world, ${customerName} — Thank you for choosing Elvenor.`;
+    } else if (selectedThankYouNote.text.includes("With warmth and gratitude")) {
+      noteText = `With warmth and gratitude, Elvenor celebrates your choice today, ${customerName}.`;
+    }
+  }
+  
+  noteContainer.innerText = noteText;
+  noteContainer.style.fontFamily = selectedThankYouNote.font;
+}
+
+// TRANSITION FROM NAME PROMPT TO MAIN CONTENT
+function transitionToMainContent() {
+  if (namePromptAnimationId) {
+    cancelAnimationFrame(namePromptAnimationId);
+  }
+  
+  namePromptHaloElements.forEach(el => {
+    el.style.transition = 'opacity 1s ease';
+    el.style.opacity = '0';
+    setTimeout(() => el.remove(), 1000);
+  });
+  
+  const namePrompt = document.getElementById('namePrompt');
+  namePrompt.style.transition = 'opacity 1s ease';
+  namePrompt.style.opacity = '0';
+  
+  setTimeout(() => {
+    namePrompt.style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    displayThankYouNoteWithName();
+    startTransitionHaloWithWelcome(); // THIS SHOULD BE CALLED HERE
+  }, 1000);
+}
+
+// 5-SECOND TRANSITION HALO WITH WELCOME NOTE - FIXED VERSION
+function startTransitionHaloWithWelcome() {
+  console.log("Starting transition halo with welcome note...");
+  
+  const container = document.querySelector('.container');
+  const rect = container.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2.075;
+  const centerY = rect.top + rect.height / 1.95;
+  const haloRadius = 140;
+  const haloCount = 25;
+  const haloDuration = 5000;
+  
+  let transitionHaloElements = [];
+  for(let i = 0; i < haloCount; i++) {
+    const s = document.createElement('div');
+    s.className = 'transition-halo';
+    s.innerText = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
+    s.style.fontSize = (6 + Math.random() * 8) + 'px';
+    s.style.opacity = '0';
+    s.style.zIndex = '998';
+    document.body.appendChild(s);
+    transitionHaloElements.push(s);
+  }
+  
+  displayWelcomeNote();
+  
+  let startTime = null;
+  
+  function animateTransitionHalo(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const angleOffset = (elapsed / haloDuration) * 0.5 * Math.PI;
+    
+    transitionHaloElements.forEach((s, i) => {
+      const angle = (i / haloCount) * 2 * Math.PI + angleOffset;
+      s.style.left = (centerX + haloRadius * Math.cos(angle) * 1.2) + 'px';
+      s.style.top = (centerY + haloRadius * Math.sin(angle) * 0.8) + 'px';
+      s.style.opacity = 0.8 + 0.2 * Math.sin(angle * 5 + elapsed / 200);
+    });
+    
+    if (elapsed < haloDuration) {
+      requestAnimationFrame(animateTransitionHalo);
+    } else {
+      playChimeSound();
+      
+      const welcomeContainer = document.getElementById('welcomeNoteContainer');
+      welcomeContainer.style.transition = 'opacity 1s ease';
+      welcomeContainer.style.opacity = '0';
+      
+      transitionHaloElements.forEach(s => {
+        s.style.transition = 'opacity 1s ease';
+        s.style.opacity = '0';
+        setTimeout(() => {
+          if (s.parentNode) {
+            s.remove();
+          }
+        }, 1000);
+      });
+      
+      setTimeout(() => {
+        document.querySelector('.container').style.opacity = '1';
+        startStaticTwinkle();
+        startFlowerAnimations();
+        startShootingStars();
+        
+        setTimeout(() => {
+          welcomeContainer.style.display = 'none';
+        }, 1000);
+      }, 1000);
+    }
+  }
+  
+  requestAnimationFrame(animateTransitionHalo);
+}
+
+// EVENT HANDLERS
+document.getElementById('submitName').addEventListener('click', function() {
+  const nameInput = document.getElementById('customerName');
+  const name = nameInput.value.trim();
+  
+  if (name) {
+    customerName = name;
+    transitionToMainContent();
+  } else {
+    nameInput.style.transform = 'translateX(5px)';
+    setTimeout(() => {
+      nameInput.style.transform = 'translateX(-5px)';
+      setTimeout(() => {
+        nameInput.style.transform = 'translateX(0)';
+      }, 100);
+    }, 100);
+  }
+});
+
+document.getElementById('customerName').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    document.getElementById('submitName').click();
+  }
+});
+
+// INITIALIZE
+window.addEventListener('load', function() {
+  selectedThankYouNote = thankYouNotes[Math.floor(Math.random() * thankYouNotes.length)];
+  selectedWelcomeNote = welcomeNotes[Math.floor(Math.random() * welcomeNotes.length)];
+  
+  document.getElementById('customerName').focus();
+  createNamePromptHalo();
+});
+
+// FLOWER ANIMATION
+function animateFlower(flower) {
+  const flowerWrap = flower.parentElement;
+  let scale = 1;
+
+  if (flowerWrap.classList.contains('size-small')) scale = 0.9;
+  else if (flowerWrap.classList.contains('size-medium')) scale = 1;
+  else scale = 1.15;
+
+  let frame = 0;
+  let direction = 1;
+
+  const frameCount = bloomFrames.length;
+  const delay = 250;
+  let lastTime = null;
+
+  function next(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    const elapsed = timestamp - lastTime;
+
+    if (elapsed >= delay) {
+      flower.style.backgroundImage = `url(${bloomFrames[frame]})`;
+
+      let rotation = 0;
+      if (frame === frameCount - 1) rotation = 25;
+      else if (frame === frameCount - 2) rotation = 12;
+
+      flower.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
+
+      frame += direction;
+      if (frame >= frameCount - 1 || frame <= 0) direction *= -1;
+
+      lastTime = timestamp;
+    }
+
+    requestAnimationFrame(next);
+  }
+
+  requestAnimationFrame(next);
+}
+
+// REMAINING FUNCTIONS
+let sparkleSets = [[], [], []];
+const setCount = 3;
+const sparklesPerSet = 22;
+
+function startStaticTwinkle() {
+  for (let set = 0; set < setCount; set++) {
+    for (let i = 0; i < sparklesPerSet; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.innerText = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.top = Math.random() * 100 + 'vh';
+      s.style.fontSize = (0.08 + Math.random() * 8) + 'px';
+      s.style.transition = 'opacity 2s ease-in-out';
+      document.body.appendChild(s);
+      sparkleSets[set].push(s);
+    }
+  }
+
+  let activeSet = 0;
+  setInterval(() => {
+    for (let i = 0; i < setCount; i++) {
+      sparkleSets[i].forEach(s => {
+        s.style.opacity = (i === activeSet ? 1 : 0);
+      });
+    }
+    activeSet = (activeSet + 1) % setCount;
+  }, 2500);
+}
+
+const bloomFrames = ["1.png","2.png","3.png","4.png","5.png","6.png","7.png"];
+
+// Preload bloom frames
+const loadedFrames = [];
+bloomFrames.forEach(src => {
+  const img = new Image();
+  img.src = src;
+  loadedFrames.push(img);
+});
+
+function startFlowerAnimations() {
+  document.querySelectorAll(".flower").forEach(f => animateFlower(f));
+}
+</script>
+</body>
+</html>
