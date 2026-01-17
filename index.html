@@ -850,7 +850,7 @@ function showWelcomeBack(name) {
         // Auto proceed after 1 second (touch version)
         setTimeout(() => {
           fadeOutWelcomeBack();
-        }, 3000); // ← 2 SECOND WAIT
+        }, 1000); // ← 1 SECOND WAIT
       };
       
       welcomeBack.addEventListener('click', welcomeBackClickHandler);
@@ -859,12 +859,12 @@ function showWelcomeBack(name) {
   
   addTouchListener();
   
-  // Auto proceed after 1 second if user hasn't interacted yet
+  // Auto proceed after 2 second if user hasn't interacted yet
   setTimeout(() => {
     if (!hasUserInteracted) {
       fadeOutWelcomeBack();
     }
-  }, 1000); // ← 1 SECOND WAIT (same for touch or no touch)
+  }, 2000); // ← 2 SECOND WAIT (same for touch or no touch)
 }
 
 // FADE OUT WELCOME BACK NOTE
@@ -1417,4 +1417,5 @@ function startFlowerAnimations() {
 </body>
 
 </html>
+
 
