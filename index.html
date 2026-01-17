@@ -39,6 +39,11 @@ body {
   overflow: hidden;
   font-family: 'Georgia', serif;
   background: #000;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* NEW WRAPPER TO MOVE ENTIRE PAGE DOWN */
@@ -63,6 +68,8 @@ body {
   width: 250px;
   pointer-events: none;
   z-index: 2;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 /* FLOWERS CONTAINER - EXACT SAME POSITIONING AS UNDERLINE */
@@ -95,6 +102,8 @@ body {
   image-rendering: auto;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 /* FLOWER POSITIONS - EXACT PIXEL POSITIONS FROM YOUR ORIGINAL CODE */
@@ -207,6 +216,20 @@ body {
   text-shadow: 0 0 5px gold;
   position: relative;
   white-space: nowrap;
+  cursor: pointer;
+  pointer-events: none; /* Initially disabled */
+  opacity: 0.5; /* Initially faded */
+  transition: opacity 0.5s ease, pointer-events 0.5s ease;
+}
+
+.insta-btn.enabled {
+  pointer-events: auto;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.insta-btn.enabled:hover {
+  opacity: 0.9;
 }
 
 .sparkle {
@@ -290,6 +313,7 @@ html, body {
   padding: 2px 0;
   caret-color: #F3E5AB;
   letter-spacing: 1px;
+  user-select: text;
 }
 
 .name-input::placeholder {
@@ -639,10 +663,63 @@ html, body {
     transform: translate(600px, 600px);
   }
 }
+
+/* SECURITY OVERLAY */
+.security-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 999999;
+  pointer-events: none;
+}
+
+.security-overlay.active {
+  pointer-events: all;
+}
+
+.no-access {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: #F3E5AB;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Poiret One', sans-serif;
+  font-size: 18px;
+  z-index: 1000000;
+  display: none;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+}
+
+.no-access.show {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 </style>
 </head>
 
 <body>
+<!-- SECURITY OVERLAY -->
+<div class="security-overlay" id="securityOverlay"></div>
+
+<!-- NO ACCESS MESSAGE -->
+<div class="no-access" id="noAccess">
+  <div style="margin-bottom: 20px; font-size: 24px;">🔒</div>
+  <div>Access restricted</div>
+  <div style="font-size: 14px; margin-top: 15px; opacity: 0.8;">This content is protected</div>
+</div>
 
 <!-- NAME PROMPT OVERLAY -->
 <div class="name-prompt-container" id="namePrompt">
@@ -717,6 +794,122 @@ html, body {
 <audio id="chime" src="shine.mp3" preload="auto"></audio>
 
 <script>
+// SECURITY MEASURES - Execute immediately
+(function() {
+    'use strict';
+    
+    // Prevent right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        showNoAccessMessage();
+        return false;
+    });
+    
+    // Prevent keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+            (e.ctrlKey && e.key === 'U') ||
+            (e.ctrlKey && e.key === 'S') ||
+            (e.ctrlKey && e.key === 'P') ||
+            (e.metaKey && e.altKey && e.key === 'I')
+        ) {
+            e.preventDefault();
+            showNoAccessMessage();
+            return false;
+        }
+        
+        // Disable Ctrl+A (Select All) to prevent text selection
+        if (e.ctrlKey && e.key === 'a') {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    // Disable text selection
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Disable drag and drop
+    document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Disable copy
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        showNoAccessMessage();
+        return false;
+    });
+    
+    // Disable cut
+    document.addEventListener('cut', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Disable paste
+    document.addEventListener('paste', function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Detect DevTools opening
+    let devtools = false;
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function() {
+            devtools = true;
+            showNoAccessMessage();
+        }
+    });
+    
+    console.log(element);
+    
+    // Function to show no access message
+    window.showNoAccessMessage = function() {
+        const noAccess = document.getElementById('noAccess');
+        const overlay = document.getElementById('securityOverlay');
+        
+        noAccess.classList.add('show');
+        overlay.classList.add('active');
+        
+        setTimeout(() => {
+            noAccess.classList.remove('show');
+            overlay.classList.remove('active');
+        }, 3000);
+    };
+    
+    // Override console methods
+    const originalConsole = {
+        log: console.log,
+        warn: console.warn,
+        error: console.error,
+        info: console.info,
+        debug: console.debug
+    };
+    
+    Object.keys(originalConsole).forEach(method => {
+        console[method] = function() {
+            // You can choose to disable all console output or modify it
+            // For now, we'll just block it
+            if (devtools) {
+                showNoAccessMessage();
+            }
+        };
+    });
+    
+    // Prevent iframe embedding
+    if (window.top !== window.self) {
+        document.body.innerHTML = '<div style="text-align:center;padding:50px;color:#F3E5AB;font-family:\'Poiret One\',sans-serif;">This content cannot be viewed in an iframe.</div>';
+    }
+})();
+
 // LOCAL STORAGE KEY
 const STORAGE_KEY = 'elvenor_customer';
 
@@ -777,6 +970,16 @@ let shootingStarInterval = null;
 let namePromptCenterPosition = { x: 0, y: 0 };
 let hasUserInteracted = false;
 let isTransitionHaloRunning = false;
+let instagramButtonEnabled = false; // Track if Instagram button is enabled
+
+// FUNCTION TO ENABLE INSTAGRAM BUTTON
+function enableInstagramButton() {
+    const instaBtn = document.querySelector('.insta-btn');
+    if (instaBtn) {
+        instaBtn.classList.add('enabled');
+        instagramButtonEnabled = true;
+    }
+}
 
 // LOCAL STORAGE FUNCTIONS
 function saveCustomerToLocalStorage(name) {
@@ -1258,6 +1461,11 @@ function startTransitionHaloFromNamePromptPosition() {
         startFlowerAnimations();
         startShootingStars();
         
+        // ENABLE INSTAGRAM BUTTON AFTER MAIN CONTENT APPEARS
+        setTimeout(() => {
+          enableInstagramButton();
+        }, 1000);
+        
         setTimeout(() => {
           welcomeContainer.style.display = 'none';
           isTransitionHaloRunning = false; // Reset flag
@@ -1291,6 +1499,17 @@ document.getElementById('submitName').addEventListener('click', function() {
 
 document.getElementById('customerName').addEventListener('keypress', function(e) {
   if (e.key === 'Enter') document.getElementById('submitName').click();
+});
+
+// PREVENT INSTAGRAM BUTTON FROM BEING CLICKED EARLY
+document.querySelectorAll('.insta-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    if (!instagramButtonEnabled) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  });
 });
 
 // INITIALIZE
@@ -1415,7 +1634,4 @@ function startFlowerAnimations() {
 // clearLocalStorage();
 </script>
 </body>
-
 </html>
-
-
